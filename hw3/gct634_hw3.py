@@ -599,11 +599,11 @@ class Runner(object):
 
 learning_rate=1e-3
 
-batch_size = 16
+batch_size = 32
 
 iterations=3000
 validation_interval=1000
-sequence_length=144000
+sequence_length=102400
 weight_decay=0
 cnn_unit=32
 fc_unit=128
