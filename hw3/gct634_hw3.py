@@ -603,9 +603,9 @@ batch_size = 16
 
 iterations=3000
 validation_interval=1000
-sequence_length=160000
+sequence_length=144000
 weight_decay=0
-cnn_unit=48
+cnn_unit=32
 fc_unit=128
 rnn_unit=128
 
