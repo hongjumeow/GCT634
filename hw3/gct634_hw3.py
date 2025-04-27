@@ -383,7 +383,7 @@ class OnsetsAndFrames(nn.Module):
             nn.Linear(fc_unit, fc_unit),
             nn.Sigmoid()
         )
-        self.frame_bilstm = BiLSTM(fc_unit, rnn_unit)
+        self.frame_bilstm = BiLSTM(fc_unit + 88, rnn_unit)
         self.frame_fc = nn.Linear(rnn_unit * 2, 88)
         self.frame_sigmoid = nn.Sigmoid()
 
@@ -617,8 +617,8 @@ train_loader = DataLoader(train_dataset, batch_size, shuffle=True)
 valid_dataset = MAESTRO_small(groups=['validation'], sequence_length=sequence_length, hop_size=HOP_SIZE, random_sample=False)
 valid_loader = DataLoader(valid_dataset, batch_size, shuffle=False)
 
-model = BasicOnsetsAndFrames(cnn_unit=cnn_unit, fc_unit=fc_unit)
-#model = OnsetsAndFrames(cnn_unit=cnn_unit, fc_unit=fc_unit, rnn_unit=rnn_unit)
+# model = BasicOnsetsAndFrames(cnn_unit=cnn_unit, fc_unit=fc_unit)
+model = OnsetsAndFrames(cnn_unit=cnn_unit, fc_unit=fc_unit, rnn_unit=rnn_unit)
 
 runner = Runner(model=model, lr = learning_rate, weight_decay = weight_decay)
 
